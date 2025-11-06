@@ -1,0 +1,1 @@
+{"rewrites":[{"source":"/api/(.*)","destination":"https://roi-api-vi55.onrender.com/$1"}],"headers":[{"source":"/(.*)","headers":[{"key":"Cache-Control","value":"no-store"}]}]} 

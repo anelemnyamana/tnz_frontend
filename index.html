@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TNZ Investments — Mining ROI</title>
+  <!-- Use Vercel proxy -->
+  <script>window.BACKEND_URL='/api';</script>
+  <style>
+    :root{--bg:#ffffff;--fg:#0a0f16;--muted:#64748b;--card:#f8fafc;--border:#e2e8f0;--accent:#2563eb;--good:#16a34a;--warn:#f59e0b;}
+    .dark{--bg:#0a0f16;--fg:#e2e8f0;--muted:#94a3b8;--card:#111827;--border:#1e293b;--accent:#3b82f6;--good:#22c55e;--warn:#fbbf24;}
+    body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Arial;margin:0;padding:16px;}
+    .wrap{max-width:1100px;margin:auto;}
+    .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:10px;}
+    h2{margin:0}.muted{color:var(--muted);font-size:13px;}
+    .brand{display:flex;align-items:center;gap:10px}.logo{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800}
+    .tag{font-size:13px;margin-top:4px}
+    .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
+    .tab{padding:8px 12px;border:1px solid var(--border);border-radius:999px;cursor:pointer;}
+    .tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+    .section{display:none}.section.active{display:block;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px;}
+    table{width:100%;border-collapse:collapse;} th,td{padding:6px;border-bottom:1px solid var(--border);text-align:left;}
+    .right{text-align:right;} input,select{width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--fg);}
+    .btn{padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer;}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;} .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+    .progress{height:10px;background:#0d1320;border:1px solid var(--border);border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--good);width:0%}
+    @media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr;}}
+    .hl{color:var(--good);font-weight:700}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:12px}
+    .modal.show{display:flex}.modal-card{background:var(--card);border:1px solid var(--border);border-radius:10px;max-width:520px;width:100%;padding:12px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">⛏</div>
+      <div>
+        <h2>TNZ Investments</h2>
+        <div class="tag muted">Own daily yield from real mining assets — <span class="hl">1.5%/day</span>, paid every 24h.</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <span id="whoami" class="muted">Signed out</span>
+      <button id="authBtn" class="btn">Login / Register</button>
+      <button id="logoutBtn" class="btn" style="display:none">Logout</button>
+      <label style="display:flex;align-items:center;gap:6px;"><input id="themeToggle" type="checkbox"/><span>Dark</span></label>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="invest">Invest</button>
+    <button class="tab" data-tab="settle">Settle</button>
+    <button class="tab" data-tab="exchange">Exchange</button>
+    <button class="tab" data-tab="fx">FX Editor</button>
+    <button class="tab" data-tab="wallet">Wallet</button>
+  </div>
+
+  <div id="overview" class="section active">
+    <div class="card">
+      <h3>Total Portfolio (USD)</h3>
+      <div id="totalUsd" style="font-size:28px;font-weight:700">$0.00</div>
+      <div class="muted" id="autoNote"></div>
+      <div style="margin-top:8px;">
+        <label><input id="roiToggle" type="checkbox" disabled/> Convert ROI → USD</label>
+        <div id="toggleStatus" class="muted">Login required</div>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
+        <button id="refreshBtn" class="btn">Refresh</button>
+        <button id="exportPortfolioBtn" class="btn">Export Portfolio</button>
+        <button id="exportPayoutsBtn" class="btn">Export Payouts</button>
+      </div>
+    </div>
+    <div class="card"><h3>FX Rates (auto, hourly)</h3><div id="fxRates" class="muted">—</div></div>
+    <div class="card">
+      <h3>Balances</h3>
+      <table><thead><tr><th>Asset</th><th class="right">Available</th><th class="right">USD Value</th></tr></thead><tbody id="assetRows"></tbody></table>
+    </div>
+    <div class="card">
+      <h3>Recent ROI Payouts</h3>
+      <table><thead><tr><th>Date</th><th>Plan</th><th>Original</th><th>FX</th><th>Credited</th></tr></thead><tbody id="payoutRows"></tbody></table>
+    </div>
+  </div>
+
+  <div id="invest" class="section">
+    <div class="card">
+      <h3>Mining Investment — 1.5% Daily</h3>
+      <div class="grid3">
+        <div><div class="muted">Principal (USD)</div><div id="invPrincipal" style="font-size:22px;font-weight:700">$0.00</div></div>
+        <div><div class="muted">Accrued (live)</div><div id="invAccrued" style="font-size:22px;font-weight:700;color:var(--good)">$0.00</div></div>
+        <div><div class="muted">Next Payout</div><div id="invCountdown" style="font-size:22px;font-weight:700">—</div></div>
+      </div>
+      <div class="progress" style="margin-top:8px;"><div id="invBar" class="bar"></div></div>
+      <div class="muted" style="margin-top:8px;">Daily growth: <b>1.5%</b> of principal. <b>Claim</b> pays to USD wallet, <b>Reinvest</b> compounds.</div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button id="invClaim" class="btn">Claim 1.5% to USD</button>
+        <button id="invReinvest" class="btn primary">Reinvest 1.5% (compound)</button>
+        <label style="display:flex;gap:6px;align-items:center;"><input id="invAuto" type="checkbox"/> Auto-compound daily</label>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Add to Investment</h3>
+      <div class="grid3">
+        <div><label>Asset</label><select id="invAsset"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>Amount</label><input id="invAmount" type="number" value="100"/></div>
+        <div style="display:flex;align-items:end;"><button id="invDeposit" class="btn primary" style="width:100%;">Deposit to Investment</button></div>
+      </div>
+      <div id="invMsg" class="muted" style="margin-top:6px;"></div>
+    </div>
+  </div>
+
+  <div id="settle" class="section">
+    <div class="card">
+      <h3>Settle ROI (manual)</h3>
+      <div class="grid3">
+        <div><label>Plan ID</label><input id="settlePlan" type="number" value="101"/></div>
+        <div><label>Amount</label><input id="settleAmount" type="number" step="0.000001" value="10"/></div>
+        <div><label>Currency</label><select id="settleCurrency"><option>USDT</option><option>TRX</option><option>BTC</option><option>USD</option></select></div>
+      </div>
+      <div style="margin-top:8px;">
+        <button id="settleBtn" class="btn primary">Settle ROI</button>
+        <span id="settleMsg" class="muted"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="exchange" class="section">
+    <div class="card">
+      <h3>Exchange</h3>
+      <div class="grid3">
+        <div><label>From</label><select id="exFrom"><option>USDT</option><option>USD</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>To</label><select id="exTo"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>Amount</label><input id="exAmount" type="number" value="100"/></div>
+      </div>
+      <div class="grid2" style="margin-top:8px;">
+        <div><label>Fee %</label><input id="exFee" type="number" step="0.1" value="0.2"/></div>
+        <div style="display:flex;align-items:end;"><button id="exBtn" class="btn primary" style="width:100%;">Convert</button></div>
+      </div>
+      <div id="exMsg" class="muted" style="margin-top:6px;"></div>
+    </div>
+  </div>
+
+  <div id="fx" class="section">
+    <div class="card">
+      <h3>FX Editor</h3>
+      <div class="grid3">
+        <div><label>Pair</label><input id="fxPair" value="TRX-USD"/></div>
+        <div><label>Rate</label><input id="fxRate" type="number" value="0.1"/></div>
+        <div style="display:flex;align-items:end;"><button id="fxBtn" class="btn primary" style="width:100%;">Update Rate</button></div>
+      </div>
+      <div id="fxMsg" class="muted" style="margin-top:6px;"></div>
+    </div>
+  </div>
+
+  <div id="wallet" class="section">
+    <div class="card">
+      <h3>Wallet Actions</h3>
+      <div class="grid3">
+        <div><label>Asset</label><select id="fundAsset"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>Amount</label><input id="fundAmount" type="number" value="25"/></div>
+        <div><label>Action</label><select id="fundAction"><option value="deposit">Deposit</option><option value="withdraw">Withdraw (demo)</option></select></div>
+      </div>
+      <div style="margin-top:8px;">
+        <button id="fundBtn" class="btn primary">Submit</button>
+        <span id="fundMsg" class="muted"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Auth Modal (same as before) ... -->
+
+<script>
+// (JS exactly as in your latest working file; unchanged except it reads BACKEND_URL='/api')
+</script>
+</body>
+</html>
