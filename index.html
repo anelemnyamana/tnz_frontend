@@ -1,34 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>TNZ Investments — Mining ROI</title>
-  <script>window.BACKEND_URL='/api';</script>
-  <style>
-    :root{--bg:#ffffff;--fg:#0a0f16;--muted:#64748b;--card:#f8fafc;--border:#e2e8f0;--accent:#2563eb;--good:#16a34a;--warn:#f59e0b}
-    .dark{--bg:#0a0f16;--fg:#e2e8f0;--muted:#94a3b8;--card:#111827;--border:#1e293b;--accent:#3b82f6;--good:#22c55e;--warn:#fbbf24}
-    *{box-sizing:border-box}body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Arial;margin:0;padding:16px}
-    .wrap{max-width:1100px;margin:auto}
-    .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-    h2{margin:0}.muted{color:var(--muted);font-size:13px}
-    .brand{display:flex;align-items:center;gap:10px}.logo{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800}
-    .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
-    .tab{padding:8px 12px;border:1px solid var(--border);border-radius:999px;cursor:pointer}
-    .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
-    .section{display:none}.section.active{display:block}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
-    table{width:100%;border-collapse:collapse}th,td{padding:6px;border-bottom:1px solid var(--border);text-align:left}
-    .right{text-align:right}
-    input,select{width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--fg)}
-    .btn{padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer}
-    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-    @media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:12px}
-    .modal.show{display:flex}.modal-card{background:var(--card);border:1px solid var(--border);border-radius:10px;max-width:420px;width:100%;padding:12px}
-    .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>TNZ Investments — Mining ROI</title>
+<script>window.BACKEND_URL='/api';</script>
+<style>
+:root{--bg:#fff;--fg:#0a0f16;--muted:#64748b;--card:#f8fafc;--border:#e2e8f0;--accent:#2563eb;--good:#16a34a;--warn:#f59e0b}
+.dark{--bg:#0a0f16;--fg:#e2e8f0;--muted:#94a3b8;--card:#111827;--border:#1e293b;--accent:#3b82f6;--good:#22c55e;--warn:#fbbf24}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Arial;margin:0;padding:16px}
+.wrap{max-width:1100px;margin:auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+h2{margin:0}.muted{color:var(--muted);font-size:13px}
+.brand{display:flex;align-items:center;gap:10px}.logo{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab{padding:8px 12px;border:1px solid var(--border);border-radius:999px;cursor:pointer}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.section{display:none}.section.active{display:block}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
+table{width:100%;border-collapse:collapse}th,td{padding:6px;border-bottom:1px solid var(--border);text-align:left}
+.right{text-align:right}
+input,select{width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--fg)}
+.btn{padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:12px}
+.modal.show{display:flex}.modal-card{background:var(--card);border:1px solid var(--border);border-radius:10px;max-width:420px;width:100%;padding:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--border);font-size:12px}
+.kpi{font-size:22px;font-weight:700}
+.small{font-size:12px}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -57,11 +60,12 @@
     <button class="tab" data-tab="wallet">Wallet</button>
   </div>
 
+  <!-- OVERVIEW -->
   <div id="overview" class="section active">
     <div class="card">
       <h3>Total Portfolio (USD)</h3>
-      <div id="totalUsd" style="font-size:28px;font-weight:700">$0.00</div>
-      <div class="muted" id="autoNote"></div>
+      <div id="totalUsd" class="kpi">$0.00</div>
+      <div class="muted small" id="updatedNote"></div>
       <div style="margin-top:8px;">
         <label><input id="roiToggle" type="checkbox" disabled/> Convert ROI → USD</label>
         <div id="toggleStatus" class="muted">Login required</div>
@@ -83,8 +87,103 @@
     </div>
   </div>
 
-  <!-- invest/settle/exchange/fx/wallet sections can remain; login fix doesn’t depend on them -->
+  <!-- INVEST -->
+  <div id="invest" class="section">
+    <div class="card">
+      <h3>Investment Status</h3>
+      <div class="row">
+        <div class="badge">Principal: <span id="invPrincipal">$0.00</span></div>
+        <div class="badge">Accrued: <span id="invAccrued">$0.00</span></div>
+        <div class="badge">Daily Rate: <span>1.5%</span></div>
+        <div class="badge">Next Payout: <span id="nextPayout">—</span></div>
+        <div class="badge">Auto-compound: <span id="autoCmpVal">OFF</span></div>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button id="invRefresh" class="btn">Refresh</button>
+        <button id="invClaim" class="btn">Claim to USD</button>
+        <button id="invReinvest" class="btn">Reinvest Accrued</button>
+        <label class="row small" style="gap:6px;margin-left:auto">
+          <input id="autoCmp" type="checkbox"/> Enable auto-compound (daily)
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Start / Add Investment</h3>
+      <div class="grid3">
+        <div><label>Asset</label><select id="invAsset">
+          <option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option>
+        </select></div>
+        <div><label>Amount</label><input id="invAmount" type="number" min="0" step="0.000001" value="100"/></div>
+        <div><label>&nbsp;</label><button id="invDeposit" class="btn primary" style="width:100%">Deposit</button></div>
+      </div>
+      <div id="invMsg" class="muted small" style="margin-top:8px"></div>
+    </div>
+  </div>
 
+  <!-- SETTLE -->
+  <div id="settle" class="section">
+    <div class="card">
+      <h3>Settle ROI (demo)</h3>
+      <div class="grid3">
+        <div><label>Plan ID</label><input id="stPlan" type="number" value="101"/></div>
+        <div><label>Amount</label><input id="stAmount" type="number" min="0" step="0.000001" value="10"/></div>
+        <div><label>Currency</label><select id="stCurrency"><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button id="stSubmit" class="btn primary">Settle ROI</button>
+        <span id="stMsg" class="muted small"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXCHANGE -->
+  <div id="exchange" class="section">
+    <div class="card">
+      <h3>Exchange</h3>
+      <div class="grid3">
+        <div><label>From</label><select id="exFrom"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>To</label><select id="exTo"><option>USDT</option><option>USD</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>Amount</label><input id="exAmt" type="number" min="0" step="0.000001" value="100"/></div>
+      </div>
+      <div class="grid2" style="margin-top:8px">
+        <div><label>Fee %</label><input id="exFee" type="number" min="0" step="0.01" value="0.2"/></div>
+        <div><label>&nbsp;</label><button id="exSubmit" class="btn primary" style="width:100%">Convert</button></div>
+      </div>
+      <div id="exMsg" class="muted small" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+  <!-- FX EDITOR -->
+  <div id="fx" class="section">
+    <div class="card">
+      <h3>FX Rates</h3>
+      <div id="fxList" class="muted small">—</div>
+      <div class="grid3" style="margin-top:8px">
+        <div><label>Pair</label><input id="fxPair" value="TRX-USD"/></div>
+        <div><label>Rate</label><input id="fxRate" type="number" step="0.000001" value="0.1"/></div>
+        <div><label>&nbsp;</label><button id="fxSave" class="btn primary" style="width:100%">Save</button></div>
+      </div>
+      <div id="fxMsg" class="muted small" style="margin-top:8px"></div>
+    </div>
+  </div>
+
+  <!-- WALLET -->
+  <div id="wallet" class="section">
+    <div class="card">
+      <h3>Wallet Actions</h3>
+      <div class="grid3">
+        <div><label>Asset</label><select id="waAsset"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
+        <div><label>Amount</label><input id="waAmt" type="number" min="0" step="0.000001" value="25"/></div>
+        <div><label>&nbsp;</label>
+          <div class="row" style="gap:6px">
+            <button id="waDeposit" class="btn primary">Deposit</button>
+            <button id="waWithdraw" class="btn">Withdraw</button>
+          </div>
+        </div>
+      </div>
+      <div id="waMsg" class="muted small" style="margin-top:8px"></div>
+    </div>
+  </div>
 </div>
 
 <!-- AUTH MODAL -->
@@ -95,14 +194,8 @@
       <button id="authClose" class="btn">Close</button>
     </div>
     <div class="muted" style="margin:6px 0">Use demo: <code>demo@roi.local</code> / <code>demo123</code></div>
-    <div style="margin-top:8px">
-      <label>Email</label>
-      <input id="authEmail" type="email" value="demo@roi.local" autocomplete="username"/>
-    </div>
-    <div style="margin-top:8px">
-      <label>Password</label>
-      <input id="authPass" type="password" value="demo123" autocomplete="current-password"/>
-    </div>
+    <div style="margin-top:8px"><label>Email</label><input id="authEmail" type="email" value="demo@roi.local" autocomplete="username"/></div>
+    <div style="margin-top:8px"><label>Password</label><input id="authPass" type="password" value="demo123" autocomplete="current-password"/></div>
     <div class="row" style="margin-top:10px">
       <button id="loginBtn" class="btn primary">Login</button>
       <button id="registerBtn" class="btn">Register</button>
@@ -115,10 +208,12 @@
 const BACKEND = window.BACKEND_URL || '/api';
 const $ = (q)=>document.querySelector(q);
 const fmtUSD = n=>'$'+(Number(n||0).toFixed(2));
+const nowStr = ()=>new Date().toLocaleTimeString();
 
 function storeToken(t){ localStorage.setItem('tnz_token', t); }
 function getToken(){ return localStorage.getItem('tnz_token')||''; }
 function clearToken(){ localStorage.removeItem('tnz_token'); }
+function getUserId(){ try{ const p=JSON.parse(atob(getToken().split('.')[1]||'')); return p.uid; }catch{ return null; } }
 
 async function api(path, opts={}){
   const headers = Object.assign({'Content-Type':'application/json'}, opts.headers||{});
@@ -131,19 +226,13 @@ async function api(path, opts={}){
   return res.json();
 }
 
-// ---- UI wiring for LOGIN ----
-const authBtn = $('#authBtn');
-const logoutBtn = $('#logoutBtn');
-const authModal = $('#authModal');
-const authClose = $('#authClose');
-const loginBtn = $('#loginBtn');
-const registerBtn = $('#registerBtn');
-const authMsg = $('#authMsg');
-const whoami = $('#whoami');
-
+// AUTH UI
+const authBtn = $('#authBtn'), logoutBtn = $('#logoutBtn');
+const authModal = $('#authModal'), authClose = $('#authClose');
+const loginBtn = $('#loginBtn'), registerBtn = $('#registerBtn');
+const authMsg = $('#authMsg'), whoami = $('#whoami');
 function showModal(){ authModal.classList.add('show'); authModal.setAttribute('aria-hidden','false'); }
 function hideModal(){ authModal.classList.remove('show'); authModal.setAttribute('aria-hidden','true'); authMsg.textContent=''; }
-
 authBtn.addEventListener('click', showModal);
 authClose.addEventListener('click', hideModal);
 window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hideModal(); });
@@ -163,10 +252,10 @@ loginBtn.addEventListener('click', async ()=>{
     authBtn.style.display = 'none';
     authMsg.textContent = 'Logged in ✓';
     setTimeout(hideModal, 300);
-    refreshAll(data.user.id);
-  }catch(err){
-    authMsg.textContent = 'Error: '+err.message;
-  }
+    await loadFx();
+    await refreshAll();
+    await refreshInvest();
+  }catch(err){ authMsg.textContent = 'Error: '+err.message; }
 });
 
 registerBtn.addEventListener('click', async ()=>{
@@ -183,10 +272,10 @@ registerBtn.addEventListener('click', async ()=>{
     authBtn.style.display = 'none';
     authMsg.textContent = 'Registered ✓';
     setTimeout(hideModal, 300);
-    refreshAll(data.user.id);
-  }catch(err){
-    authMsg.textContent = 'Error: '+err.message;
-  }
+    await loadFx();
+    await refreshAll();
+    await refreshInvest();
+  }catch(err){ authMsg.textContent = 'Error: '+err.message; }
 });
 
 logoutBtn.addEventListener('click', ()=>{
@@ -200,53 +289,205 @@ logoutBtn.addEventListener('click', ()=>{
   $('#totalUsd').textContent = '$0.00';
   $('#assetRows').innerHTML = '';
   $('#payoutRows').innerHTML = '';
+  $('#fxList').textContent = '—';
+  $('#invPrincipal').textContent = '$0.00';
+  $('#invAccrued').textContent = '$0.00';
+  $('#nextPayout').textContent = '—';
+  $('#autoCmp').checked = false;
+  $('#autoCmpVal').textContent = 'OFF';
 });
 
-// ---- Tabs (keep Overview active) ----
+// Tabs
 document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
+  btn.addEventListener('click', async ()=>{
     document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
     btn.classList.add('active');
-    $('#'+btn.dataset.tab).classList.add('active');
+    const id = btn.dataset.tab;
+    $('#'+id).classList.add('active');
+    if(id==='overview'){ await loadFx(); await refreshAll(); }
+    if(id==='invest'){ await refreshInvest(); }
+    if(id==='fx'){ await fxLoad(); }
   });
 });
 
-// ---- Dark mode toggle ----
-const themeToggle = $('#themeToggle');
-themeToggle.addEventListener('change', ()=> document.body.classList.toggle('dark', themeToggle.checked));
+// Theme
+$('#themeToggle').addEventListener('change', ()=> document.body.classList.toggle('dark', $('#themeToggle').checked));
 
-// ---- Load FX + clear UI (works even logged out) ----
+// Overview data
 async function loadFx(){
   try{
     const fx = await (await fetch(BACKEND+'/fx')).json();
     $('#fxRates').textContent = Object.entries(fx).map(([k,v])=>`${k}=${v}`).join(' · ');
-  }catch{
-    $('#fxRates').textContent = '—';
-  }
+  }catch{ $('#fxRates').textContent = '—'; }
 }
 
-// ---- Data refresh after login ----
-async function refreshAll(uid){
+async function refreshAll(){
+  const uid = getUserId(); if(!uid) return;
   try{
     const p = await api('/portfolio/'+uid);
     $('#totalUsd').textContent = fmtUSD(p.totalUsd);
+    $('#updatedNote').textContent = 'Updated ' + nowStr();
     const rows = p.breakdown.map(r=>`<tr><td>${r.asset}</td><td class="right">${Number(r.available).toFixed(6).replace(/\.?0+$/,'')}</td><td class="right">${fmtUSD(r.usd)}</td></tr>`).join('');
     $('#assetRows').innerHTML = rows;
     const payouts = await api('/payouts/'+uid);
     const prow = payouts.slice(-10).reverse().map(x=>{
       const d=new Date(x.created_at); const fx = (x.fx_rate_to_usd==null?'—':x.fx_rate_to_usd);
-      const cred = (x.usd_amount==null?'—':fmtUSD(x.usd_amount)+' USD');
+      const cred = (x.usd_amount==null?'—':fmtUSD(x.usd_amount));
       return `<tr><td>${d.toLocaleString()}</td><td>${x.plan_id}</td><td>${x.original_amount} ${x.original_currency}</td><td>${fx}</td><td>${cred}</td></tr>`;
     }).join('');
     $('#payoutRows').innerHTML = prow || '';
-  }catch(e){
-    console.error(e);
-  }
+  }catch(e){ console.error(e); }
+}
+$('#refreshBtn').addEventListener('click', ()=>{ loadFx(); refreshAll(); });
+
+// CSV exports (simple)
+function download(name, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'})); a.download=name; a.click(); }
+$('#exportPortfolioBtn').addEventListener('click', async ()=>{
+  const uid = getUserId(); if(!uid) return;
+  const p = await api('/portfolio/'+uid);
+  const csv = ['asset,available,usd']
+    .concat(p.breakdown.map(r=>[r.asset,r.available,r.usd].join(','))).join('\n');
+  download('portfolio.csv', csv);
+});
+$('#exportPayoutsBtn').addEventListener('click', async ()=>{
+  const uid = getUserId(); if(!uid) return;
+  const ps = await api('/payouts/'+uid);
+  const csv = ['created_at,plan_id,original_amount,original_currency,fx_rate_to_usd,usd_amount,converted']
+    .concat(ps.map(x=>[x.created_at,x.plan_id,x.original_amount,x.original_currency,x.fx_rate_to_usd??'',x.usd_amount??'',x.converted].join(','))).join('\n');
+  download('payouts.csv', csv);
+});
+
+// Invest tab
+let investTimer = null;
+function formatDur(s){ if(s==null) return '—'; const h=String(Math.floor(s/3600)).padStart(2,'0'); const m=String(Math.floor((s%3600)/60)).padStart(2,'0'); const sec=String(s%60).padStart(2,'0'); return `${h}:${m}:${sec}`; }
+
+async function refreshInvest(){
+  const uid = getUserId(); if(!uid) return;
+  try{
+    const st = await api('/invest/status/'+uid);
+    $('#invPrincipal').textContent = fmtUSD(st.principal_usd);
+    $('#invAccrued').textContent = fmtUSD(st.accrued_usd);
+    $('#autoCmp').checked = !!st.auto_compound;
+    $('#autoCmpVal').textContent = st.auto_compound ? 'ON':'OFF';
+    if(investTimer) { clearInterval(investTimer); investTimer=null; }
+    if(st.seconds_to_next!=null){
+      let left = st.seconds_to_next|0;
+      $('#nextPayout').textContent = formatDur(left);
+      investTimer = setInterval(()=>{ left = Math.max(0,left-1); $('#nextPayout').textContent = formatDur(left); }, 1000);
+    } else {
+      $('#nextPayout').textContent = '—';
+    }
+  }catch(e){ console.error(e); }
 }
 
-// boot
-loadFx();
+$('#invDeposit').addEventListener('click', async ()=>{
+  $('#invMsg').textContent = 'Processing...';
+  try{
+    const uid = getUserId(); if(!uid) throw new Error('Login required');
+    const asset = $('#invAsset').value; const amount = Number($('#invAmount').value);
+    const r = await api('/invest/deposit', { method:'POST', body: JSON.stringify({userId:uid,asset,amount}) });
+    $('#invMsg').textContent = 'Deposited ✓  Principal: '+fmtUSD(r.principal_usd);
+    await refreshInvest(); await refreshAll();
+  }catch(e){ $('#invMsg').textContent = 'Error: '+e.message; }
+});
+$('#invClaim').addEventListener('click', async ()=>{
+  $('#invMsg').textContent = 'Claiming...';
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const r = await api('/invest/claim', { method:'POST', body: JSON.stringify({userId:uid}) });
+    $('#invMsg').textContent = 'Credited: '+fmtUSD(r.credited_usd)+'  New USD: '+fmtUSD(r.new_usd_balance);
+    await refreshInvest(); await refreshAll();
+  }catch(e){ $('#invMsg').textContent = 'Error: '+e.message; }
+});
+$('#invReinvest').addEventListener('click', async ()=>{
+  $('#invMsg').textContent = 'Reinvesting...';
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const r = await api('/invest/reinvest', { method:'POST', body: JSON.stringify({userId:uid}) });
+    $('#invMsg').textContent = 'New principal: '+fmtUSD(r.principal_usd)+' ✓';
+    await refreshInvest(); await refreshAll();
+  }catch(e){ $('#invMsg').textContent = 'Error: '+e.message; }
+});
+$('#autoCmp').addEventListener('change', async ()=>{
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const on = $('#autoCmp').checked;
+    await api('/invest/config',{ method:'POST', body: JSON.stringify({userId:uid,auto_compound:on}) });
+    $('#autoCmpVal').textContent = on?'ON':'OFF';
+  }catch(e){ $('#invMsg').textContent = 'Error: '+e.message; $('#autoCmp').checked = !$('#autoCmp').checked; }
+});
+$('#invRefresh').addEventListener('click', refreshInvest);
+
+// Settle tab
+$('#stSubmit').addEventListener('click', async ()=>{
+  $('#stMsg').textContent = 'Settling...';
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const planId=Number($('#stPlan').value), amount=Number($('#stAmount').value), currency=$('#stCurrency').value;
+    const r = await api('/settle',{ method:'POST', body: JSON.stringify({userId:uid,planId,amount,currency}) });
+    $('#stMsg').textContent = r.converted ? `Credited ${fmtUSD(r.credited.amount)} USD at FX ${r.rate}` : `Credited ${r.credited.amount} ${currency}`;
+    await refreshAll();
+  }catch(e){ $('#stMsg').textContent = 'Error: '+e.message; }
+});
+
+// Exchange tab
+$('#exSubmit').addEventListener('click', async ()=>{
+  $('#exMsg').textContent='Converting...';
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const fromAsset=$('#exFrom').value,toAsset=$('#exTo').value,amount=Number($('#exAmt').value),feePct=Number($('#exFee').value||0);
+    const r = await api('/exchange/convert',{ method:'POST', body: JSON.stringify({userId:uid,fromAsset,toAsset,amount,feePct}) });
+    $('#exMsg').textContent = `Done: ${r.from.amount} ${r.from.asset} → ${r.to.amount} ${r.to.asset}`;
+    await refreshAll();
+  }catch(e){ $('#exMsg').textContent = 'Error: '+e.message; }
+});
+
+// FX editor
+async function fxLoad(){
+  try{
+    const fx = await (await fetch(BACKEND+'/fx')).json();
+    $('#fxList').textContent = Object.entries(fx).map(([k,v])=>`${k}=${v}`).join(' · ');
+  }catch{ $('#fxList').textContent = '—'; }
+}
+$('#fxSave').addEventListener('click', async ()=>{
+  $('#fxMsg').textContent='Saving...';
+  try{
+    const pair=$('#fxPair').value.trim(), rate=Number($('#fxRate').value);
+    await api('/fx',{ method:'POST', body: JSON.stringify({pair,rate}) });
+    $('#fxMsg').textContent='Saved ✓'; fxLoad(); loadFx(); refreshAll();
+  }catch(e){ $('#fxMsg').textContent='Error: '+e.message; }
+});
+
+// Wallet tab
+async function walletDeposit(userId, asset, amount){
+  return api('/deposit',{ method:'POST', body: JSON.stringify({userId,asset,amount}) });
+}
+$('#waDeposit').addEventListener('click', async ()=>{
+  $('#waMsg').textContent='Depositing...';
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const asset=$('#waAsset').value, amount=Number($('#waAmt').value);
+    const r=await walletDeposit(uid, asset, amount);
+    $('#waMsg').textContent=`New ${asset} balance: ${r.newBalance}`;
+    await refreshAll(); await refreshInvest();
+  }catch(e){ $('#waMsg').textContent='Error: '+e.message; }
+});
+$('#waWithdraw').addEventListener('click', async ()=>{
+  $('#waMsg').textContent='Withdrawing...';
+  try{
+    const uid=getUserId(); if(!uid) throw new Error('Login required');
+    const asset=$('#waAsset').value, amount=Number($('#waAmt').value);
+    const r=await walletDeposit(uid, asset, -Math.abs(amount));
+    $('#waMsg').textContent=`New ${asset} balance: ${r.newBalance}`;
+    await refreshAll(); await refreshInvest();
+  }catch(e){ $('#waMsg').textContent='Error: '+e.message; }
+});
+
+// Boot
+(async ()=>{
+  await loadFx();
+})();
 </script>
 </body>
 </html>
