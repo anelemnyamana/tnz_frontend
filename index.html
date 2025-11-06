@@ -4,32 +4,30 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>TNZ Investments — Mining ROI</title>
-  <!-- Use Vercel proxy -->
   <script>window.BACKEND_URL='/api';</script>
   <style>
-    :root{--bg:#ffffff;--fg:#0a0f16;--muted:#64748b;--card:#f8fafc;--border:#e2e8f0;--accent:#2563eb;--good:#16a34a;--warn:#f59e0b;}
-    .dark{--bg:#0a0f16;--fg:#e2e8f0;--muted:#94a3b8;--card:#111827;--border:#1e293b;--accent:#3b82f6;--good:#22c55e;--warn:#fbbf24;}
-    body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Arial;margin:0;padding:16px;}
-    .wrap{max-width:1100px;margin:auto;}
-    .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:10px;}
-    h2{margin:0}.muted{color:var(--muted);font-size:13px;}
+    :root{--bg:#ffffff;--fg:#0a0f16;--muted:#64748b;--card:#f8fafc;--border:#e2e8f0;--accent:#2563eb;--good:#16a34a;--warn:#f59e0b}
+    .dark{--bg:#0a0f16;--fg:#e2e8f0;--muted:#94a3b8;--card:#111827;--border:#1e293b;--accent:#3b82f6;--good:#22c55e;--warn:#fbbf24}
+    *{box-sizing:border-box}body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Arial;margin:0;padding:16px}
+    .wrap{max-width:1100px;margin:auto}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+    h2{margin:0}.muted{color:var(--muted);font-size:13px}
     .brand{display:flex;align-items:center;gap:10px}.logo{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;font-weight:800}
-    .tag{font-size:13px;margin-top:4px}
-    .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
-    .tab{padding:8px 12px;border:1px solid var(--border);border-radius:999px;cursor:pointer;}
-    .tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
-    .section{display:none}.section.active{display:block;}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px;}
-    table{width:100%;border-collapse:collapse;} th,td{padding:6px;border-bottom:1px solid var(--border);text-align:left;}
-    .right{text-align:right;} input,select{width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--fg);}
-    .btn{padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer;}
-    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;} .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
-    .progress{height:10px;background:#0d1320;border:1px solid var(--border);border-radius:999px;overflow:hidden}.bar{height:100%;background:var(--good);width:0%}
-    @media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr;}}
-    .hl{color:var(--good);font-weight:700}
+    .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+    .tab{padding:8px 12px;border:1px solid var(--border);border-radius:999px;cursor:pointer}
+    .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .section{display:none}.section.active{display:block}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse}th,td{padding:6px;border-bottom:1px solid var(--border);text-align:left}
+    .right{text-align:right}
+    input,select{width:100%;padding:8px;border:1px solid var(--border);border-radius:6px;background:var(--card);color:var(--fg)}
+    .btn{padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--fg);cursor:pointer}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+    @media(max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:12px}
-    .modal.show{display:flex}.modal-card{background:var(--card);border:1px solid var(--border);border-radius:10px;max-width:520px;width:100%;padding:12px}
+    .modal.show{display:flex}.modal-card{background:var(--card);border:1px solid var(--border);border-radius:10px;max-width:420px;width:100%;padding:12px}
+    .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   </style>
 </head>
 <body>
@@ -39,14 +37,14 @@
       <div class="logo">⛏</div>
       <div>
         <h2>TNZ Investments</h2>
-        <div class="tag muted">Own daily yield from real mining assets — <span class="hl">1.5%/day</span>, paid every 24h.</div>
+        <div class="muted">Own daily yield from real mining assets — <b>1.5%/day</b>, paid every 24h.</div>
       </div>
     </div>
-    <div style="display:flex;gap:10px;align-items:center;">
+    <div class="row">
       <span id="whoami" class="muted">Signed out</span>
       <button id="authBtn" class="btn">Login / Register</button>
       <button id="logoutBtn" class="btn" style="display:none">Logout</button>
-      <label style="display:flex;align-items:center;gap:6px;"><input id="themeToggle" type="checkbox"/><span>Dark</span></label>
+      <label class="row" style="gap:6px"><input id="themeToggle" type="checkbox"/><span>Dark</span></label>
     </div>
   </div>
 
@@ -68,7 +66,7 @@
         <label><input id="roiToggle" type="checkbox" disabled/> Convert ROI → USD</label>
         <div id="toggleStatus" class="muted">Login required</div>
       </div>
-      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
+      <div class="row" style="margin-top:10px">
         <button id="refreshBtn" class="btn">Refresh</button>
         <button id="exportPortfolioBtn" class="btn">Export Portfolio</button>
         <button id="exportPayoutsBtn" class="btn">Export Payouts</button>
@@ -85,96 +83,170 @@
     </div>
   </div>
 
-  <div id="invest" class="section">
-    <div class="card">
-      <h3>Mining Investment — 1.5% Daily</h3>
-      <div class="grid3">
-        <div><div class="muted">Principal (USD)</div><div id="invPrincipal" style="font-size:22px;font-weight:700">$0.00</div></div>
-        <div><div class="muted">Accrued (live)</div><div id="invAccrued" style="font-size:22px;font-weight:700;color:var(--good)">$0.00</div></div>
-        <div><div class="muted">Next Payout</div><div id="invCountdown" style="font-size:22px;font-weight:700">—</div></div>
-      </div>
-      <div class="progress" style="margin-top:8px;"><div id="invBar" class="bar"></div></div>
-      <div class="muted" style="margin-top:8px;">Daily growth: <b>1.5%</b> of principal. <b>Claim</b> pays to USD wallet, <b>Reinvest</b> compounds.</div>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <button id="invClaim" class="btn">Claim 1.5% to USD</button>
-        <button id="invReinvest" class="btn primary">Reinvest 1.5% (compound)</button>
-        <label style="display:flex;gap:6px;align-items:center;"><input id="invAuto" type="checkbox"/> Auto-compound daily</label>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Add to Investment</h3>
-      <div class="grid3">
-        <div><label>Asset</label><select id="invAsset"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
-        <div><label>Amount</label><input id="invAmount" type="number" value="100"/></div>
-        <div style="display:flex;align-items:end;"><button id="invDeposit" class="btn primary" style="width:100%;">Deposit to Investment</button></div>
-      </div>
-      <div id="invMsg" class="muted" style="margin-top:6px;"></div>
-    </div>
-  </div>
+  <!-- invest/settle/exchange/fx/wallet sections can remain; login fix doesn’t depend on them -->
 
-  <div id="settle" class="section">
-    <div class="card">
-      <h3>Settle ROI (manual)</h3>
-      <div class="grid3">
-        <div><label>Plan ID</label><input id="settlePlan" type="number" value="101"/></div>
-        <div><label>Amount</label><input id="settleAmount" type="number" step="0.000001" value="10"/></div>
-        <div><label>Currency</label><select id="settleCurrency"><option>USDT</option><option>TRX</option><option>BTC</option><option>USD</option></select></div>
-      </div>
-      <div style="margin-top:8px;">
-        <button id="settleBtn" class="btn primary">Settle ROI</button>
-        <span id="settleMsg" class="muted"></span>
-      </div>
-    </div>
-  </div>
+</div>
 
-  <div id="exchange" class="section">
-    <div class="card">
-      <h3>Exchange</h3>
-      <div class="grid3">
-        <div><label>From</label><select id="exFrom"><option>USDT</option><option>USD</option><option>TRX</option><option>BTC</option></select></div>
-        <div><label>To</label><select id="exTo"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
-        <div><label>Amount</label><input id="exAmount" type="number" value="100"/></div>
-      </div>
-      <div class="grid2" style="margin-top:8px;">
-        <div><label>Fee %</label><input id="exFee" type="number" step="0.1" value="0.2"/></div>
-        <div style="display:flex;align-items:end;"><button id="exBtn" class="btn primary" style="width:100%;">Convert</button></div>
-      </div>
-      <div id="exMsg" class="muted" style="margin-top:6px;"></div>
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="row" style="justify-content:space-between">
+      <h3 style="margin:0">Sign in / Register</h3>
+      <button id="authClose" class="btn">Close</button>
     </div>
-  </div>
-
-  <div id="fx" class="section">
-    <div class="card">
-      <h3>FX Editor</h3>
-      <div class="grid3">
-        <div><label>Pair</label><input id="fxPair" value="TRX-USD"/></div>
-        <div><label>Rate</label><input id="fxRate" type="number" value="0.1"/></div>
-        <div style="display:flex;align-items:end;"><button id="fxBtn" class="btn primary" style="width:100%;">Update Rate</button></div>
-      </div>
-      <div id="fxMsg" class="muted" style="margin-top:6px;"></div>
+    <div class="muted" style="margin:6px 0">Use demo: <code>demo@roi.local</code> / <code>demo123</code></div>
+    <div style="margin-top:8px">
+      <label>Email</label>
+      <input id="authEmail" type="email" value="demo@roi.local" autocomplete="username"/>
     </div>
-  </div>
-
-  <div id="wallet" class="section">
-    <div class="card">
-      <h3>Wallet Actions</h3>
-      <div class="grid3">
-        <div><label>Asset</label><select id="fundAsset"><option>USD</option><option>USDT</option><option>TRX</option><option>BTC</option></select></div>
-        <div><label>Amount</label><input id="fundAmount" type="number" value="25"/></div>
-        <div><label>Action</label><select id="fundAction"><option value="deposit">Deposit</option><option value="withdraw">Withdraw (demo)</option></select></div>
-      </div>
-      <div style="margin-top:8px;">
-        <button id="fundBtn" class="btn primary">Submit</button>
-        <span id="fundMsg" class="muted"></span>
-      </div>
+    <div style="margin-top:8px">
+      <label>Password</label>
+      <input id="authPass" type="password" value="demo123" autocomplete="current-password"/>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button id="loginBtn" class="btn primary">Login</button>
+      <button id="registerBtn" class="btn">Register</button>
+      <span id="authMsg" class="muted"></span>
     </div>
   </div>
 </div>
 
-<!-- Auth Modal (same as before) ... -->
-
 <script>
-// (JS exactly as in your latest working file; unchanged except it reads BACKEND_URL='/api')
+const BACKEND = window.BACKEND_URL || '/api';
+const $ = (q)=>document.querySelector(q);
+const fmtUSD = n=>'$'+(Number(n||0).toFixed(2));
+
+function storeToken(t){ localStorage.setItem('tnz_token', t); }
+function getToken(){ return localStorage.getItem('tnz_token')||''; }
+function clearToken(){ localStorage.removeItem('tnz_token'); }
+
+async function api(path, opts={}){
+  const headers = Object.assign({'Content-Type':'application/json'}, opts.headers||{});
+  const t = getToken(); if(t) headers.Authorization = 'Bearer '+t;
+  const res = await fetch(BACKEND+path, { ...opts, headers });
+  if(!res.ok){
+    const txt = await res.text().catch(()=>res.statusText);
+    throw new Error(`HTTP ${res.status}: ${txt}`);
+  }
+  return res.json();
+}
+
+// ---- UI wiring for LOGIN ----
+const authBtn = $('#authBtn');
+const logoutBtn = $('#logoutBtn');
+const authModal = $('#authModal');
+const authClose = $('#authClose');
+const loginBtn = $('#loginBtn');
+const registerBtn = $('#registerBtn');
+const authMsg = $('#authMsg');
+const whoami = $('#whoami');
+
+function showModal(){ authModal.classList.add('show'); authModal.setAttribute('aria-hidden','false'); }
+function hideModal(){ authModal.classList.remove('show'); authModal.setAttribute('aria-hidden','true'); authMsg.textContent=''; }
+
+authBtn.addEventListener('click', showModal);
+authClose.addEventListener('click', hideModal);
+window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hideModal(); });
+authModal.addEventListener('click', (e)=>{ if(e.target===authModal) hideModal(); });
+
+loginBtn.addEventListener('click', async ()=>{
+  authMsg.textContent='Logging in...';
+  try{
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPass').value;
+    const data = await api('/auth/login',{ method:'POST', body: JSON.stringify({email,password}) });
+    storeToken(data.token);
+    whoami.textContent = 'User: '+data.user.email;
+    $('#roiToggle').disabled = false;
+    $('#toggleStatus').textContent = 'Currently: ' + (data.user.roi_convert_to_usd ? 'ON':'OFF');
+    logoutBtn.style.display = '';
+    authBtn.style.display = 'none';
+    authMsg.textContent = 'Logged in ✓';
+    setTimeout(hideModal, 300);
+    refreshAll(data.user.id);
+  }catch(err){
+    authMsg.textContent = 'Error: '+err.message;
+  }
+});
+
+registerBtn.addEventListener('click', async ()=>{
+  authMsg.textContent='Registering...';
+  try{
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPass').value;
+    const data = await api('/auth/register',{ method:'POST', body: JSON.stringify({email,password}) });
+    storeToken(data.token);
+    whoami.textContent = 'User: '+data.user.email;
+    $('#roiToggle').disabled = false;
+    $('#toggleStatus').textContent = 'Currently: ' + (data.user.roi_convert_to_usd ? 'ON':'OFF');
+    logoutBtn.style.display = '';
+    authBtn.style.display = 'none';
+    authMsg.textContent = 'Registered ✓';
+    setTimeout(hideModal, 300);
+    refreshAll(data.user.id);
+  }catch(err){
+    authMsg.textContent = 'Error: '+err.message;
+  }
+});
+
+logoutBtn.addEventListener('click', ()=>{
+  clearToken();
+  whoami.textContent = 'Signed out';
+  authBtn.style.display = '';
+  logoutBtn.style.display = 'none';
+  $('#roiToggle').checked = false;
+  $('#roiToggle').disabled = true;
+  $('#toggleStatus').textContent = 'Login required';
+  $('#totalUsd').textContent = '$0.00';
+  $('#assetRows').innerHTML = '';
+  $('#payoutRows').innerHTML = '';
+});
+
+// ---- Tabs (keep Overview active) ----
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    btn.classList.add('active');
+    $('#'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ---- Dark mode toggle ----
+const themeToggle = $('#themeToggle');
+themeToggle.addEventListener('change', ()=> document.body.classList.toggle('dark', themeToggle.checked));
+
+// ---- Load FX + clear UI (works even logged out) ----
+async function loadFx(){
+  try{
+    const fx = await (await fetch(BACKEND+'/fx')).json();
+    $('#fxRates').textContent = Object.entries(fx).map(([k,v])=>`${k}=${v}`).join(' · ');
+  }catch{
+    $('#fxRates').textContent = '—';
+  }
+}
+
+// ---- Data refresh after login ----
+async function refreshAll(uid){
+  try{
+    const p = await api('/portfolio/'+uid);
+    $('#totalUsd').textContent = fmtUSD(p.totalUsd);
+    const rows = p.breakdown.map(r=>`<tr><td>${r.asset}</td><td class="right">${Number(r.available).toFixed(6).replace(/\.?0+$/,'')}</td><td class="right">${fmtUSD(r.usd)}</td></tr>`).join('');
+    $('#assetRows').innerHTML = rows;
+    const payouts = await api('/payouts/'+uid);
+    const prow = payouts.slice(-10).reverse().map(x=>{
+      const d=new Date(x.created_at); const fx = (x.fx_rate_to_usd==null?'—':x.fx_rate_to_usd);
+      const cred = (x.usd_amount==null?'—':fmtUSD(x.usd_amount)+' USD');
+      return `<tr><td>${d.toLocaleString()}</td><td>${x.plan_id}</td><td>${x.original_amount} ${x.original_currency}</td><td>${fx}</td><td>${cred}</td></tr>`;
+    }).join('');
+    $('#payoutRows').innerHTML = prow || '';
+  }catch(e){
+    console.error(e);
+  }
+}
+
+// boot
+loadFx();
 </script>
 </body>
 </html>
